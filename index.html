@@ -24,13 +24,23 @@
     </script>
     <style>
         body {
-            background: black;
+            background: #e74c3c;
+        }
+        #iframe {
+            border: 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 10%;
+            right: 10%;
+            width: 80%;
+            height: 100%;
         }
     </style>
 </head>
 
 <body>
-    <iframe allowfullscreen="true" src="https://mixer.com/embed/player/17350019"></iframe>
+    <iframe id="iframe" allowfullscreen="true" src="https://mixer.com/embed/player/17350019"></iframe>
     <button onclick="push('buttonClick');">clickme </button>
 </body>
 

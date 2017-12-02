@@ -20,9 +20,6 @@ app.get('/', function(req, res) {
 });
 
 app.post('/pusher/auth', function(req, res) {
-    console.log("pusher....")
-    console.log(req.body.socket_id);
-
   var socketId = req.body.socket_id;
   var channel = req.body.channel_name;
   var auth = pusher.authenticate(socketId, channel);
