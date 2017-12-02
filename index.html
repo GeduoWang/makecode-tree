@@ -4,11 +4,10 @@
 <head>
     <title>MakeCode Tree</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/JQuery-Snowfall/1.7.4/snowfall.jquery.min.js"></script>
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <script>
-
-        // Enable pusher logging - don't include this in production
-        Pusher.logToConsole = true;
 
         var pusher = new Pusher('9f03d84109487dd57bbd', {
             cluster: 'us2',
@@ -22,20 +21,37 @@
         function push(event) {
             channel.trigger("client-" + event, {});
         }
+
+        $(document).ready(function () {
+            setTimeout(() => {
+                $(document).snowfall({collection : '.collectonme'});
+                //$(document).snowFall.snow(document.body, { round: true, shadow: true, maxSpeed: 5, flakeCount: 10, minSize: 3, maxSize: 8 });
+            }, 2000);
+        });
     </script>
     <style>
         body {
-            background: #e74c3c;
+            background: #e1e5e6;
         }
 
-        #iframe {
-            border: 0;
+        .screen-border {
+            border-radius: 5px;
             position: absolute;
+            padding: 0.5%;
+            margin-top: 0.5%;
+            background: #7A7270;
             top: 0;
-            bottom: 0;
+            bottom: 10%;
             left: 10%;
             right: 10%;
             width: 80%;
+            height: 80%;
+        }
+
+        #screen {
+            position: relative;
+            border: 0;
+            width: 100%;
             height: 100%;
         }
 
@@ -54,6 +70,7 @@
             top: 0;
             bottom: 0;
         }
+
         .microbitimage {
             height: 100px;
             width: 150px;
@@ -61,24 +78,36 @@
             border-radius: 10px;
             border: solid transparent 5px;
         }
+
         .microbitimage:hover {
             border-radius: 10px;
             border: solid white 5px;
             cursor: pointer;
         }
+        .collectonme {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5%;
+            background: white;
+        }
     </style>
 </head>
 
 <body>
-    <iframe id="iframe" allowfullscreen="true" src="https://mixer.com/embed/player/17350019"></iframe>
+    <div class="screen-border">
+        <iframe id="screen" allowfullscreen="true" src="https://mixer.com/embed/player/17350019"></iframe>
+    </div>
     <div class="left">
         <div class="animated bounceInLeft" onclick="push('buttonClick')">
-            <img src="/images/microbit.simplified.svg" class="microbitimage"/>
+            <img src="/images/microbit.simplified.svg" class="microbitimage" />
         </div>
     </div>
     <div class="right">
 
     </div>
+    <div class="collectonme"></div>
 </body>
 
 </html>
