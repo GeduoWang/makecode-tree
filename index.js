@@ -1,13 +1,15 @@
-var Pusher = require('pusher');
+var Pusher = require('pusher-js');
+//Pusher.logToConsole = true;
 
-var pusher = new Pusher({
-  appId: '439400',
-  key: '60b6e4057ed0e16138e3',
-  secret: '6b6c0288ee8f76e6f7a4',
-  cluster: 'us2',
-  encrypted: true
+var pusher = new Pusher('9f03d84109487dd57bbd', {
+    cluster: 'us2',
+    encrypted: true,
+    authEndpoint: '/pusher_auth.php'
 });
 
-pusher.trigger('my-channel', 'my-event', {
-  "message": "hello world"
+var channel = pusher.subscribe('private-tree-channel');
+channel.bind('pusher:subscription_succeeded', function () {
+    channel.bind("client-" + 'buttonClick', function (data) {
+        console.log("button clicked")
+    });
 });

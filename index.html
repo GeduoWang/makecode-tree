@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>MakeCode Tree</title>
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
@@ -8,19 +9,29 @@
         // Enable pusher logging - don't include this in production
         Pusher.logToConsole = true;
 
-        var pusher = new Pusher('60b6e4057ed0e16138e3', {
+        var pusher = new Pusher('9f03d84109487dd57bbd', {
             cluster: 'us2',
             encrypted: true
         });
 
-        var channel = pusher.subscribe('my-channel');
-        channel.bind('my-event', function (data) {
-            alert(data.message);
+        var channel = pusher.subscribe('private-tree-channel');
+        channel.bind('pusher:subscription_succeeded', function () {
+            console.log("subscribtion succeeded");
         });
+        function push(event) {
+            channel.trigger("client-" + event, {});
+        }
     </script>
+    <style>
+        body {
+            background: black;
+        }
+    </style>
 </head>
 
 <body>
     <iframe allowfullscreen="true" src="https://mixer.com/embed/player/17350019"></iframe>
+    <button onclick="push('buttonClick');">clickme </button>
 </body>
+
 </html>
