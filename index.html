@@ -3,6 +3,7 @@
 
 <head>
     <title>MakeCode Tree</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" />
     <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
     <script>
 
@@ -26,6 +27,7 @@
         body {
             background: #e74c3c;
         }
+
         #iframe {
             border: 0;
             position: absolute;
@@ -36,12 +38,47 @@
             width: 80%;
             height: 100%;
         }
+
+        .left {
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            padding: 10px;
+            padding-top: 20px;
+        }
+
+        .right {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+        .microbitimage {
+            height: 100px;
+            width: 150px;
+            transform: rotate(-15deg);
+            border-radius: 10px;
+            border: solid transparent 5px;
+        }
+        .microbitimage:hover {
+            border-radius: 10px;
+            border: solid white 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <iframe id="iframe" allowfullscreen="true" src="https://mixer.com/embed/player/17350019"></iframe>
-    <button onclick="push('buttonClick');">clickme </button>
+    <div class="left">
+        <div class="animated bounceInLeft" onclick="push('buttonClick')">
+            <img src="/images/microbit.simplified.svg" class="microbitimage"/>
+        </div>
+    </div>
+    <div class="right">
+
+    </div>
 </body>
 
 </html>
