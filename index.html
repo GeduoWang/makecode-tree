@@ -24,7 +24,7 @@
 
         $(document).ready(function () {
             setTimeout(() => {
-                $(document).snowfall({collection : '.collectonme'});
+                $(document).snowfall({ collection: '.collectonme' });
                 //$(document).snowFall.snow(document.body, { round: true, shadow: true, maxSpeed: 5, flakeCount: 10, minSize: 3, maxSize: 8 });
             }, 2000);
         });
@@ -84,6 +84,7 @@
             border: solid white 5px;
             cursor: pointer;
         }
+
         .collectonme {
             position: absolute;
             bottom: 0;
@@ -92,12 +93,27 @@
             height: 5%;
             background: white;
         }
+        .makecodetv {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            height: 7%;
+            width: 7%;
+            padding: 10px;
+        }
+        .makecodetv img {
+            height: 100%;
+            width: 100%;
+        }
     </style>
 </head>
 
 <body>
     <div class="screen-border">
         <iframe id="screen" allowfullscreen="true" src="https://mixer.com/embed/player/17350019"></iframe>
+        <div class="makecodetv">
+            <img src="/images/makecodetv.svg" />
+        </div>
     </div>
     <div class="left">
         <div class="animated bounceInLeft" onclick="push('buttonClick')">
@@ -107,7 +123,7 @@
     <div class="right">
 
     </div>
-    <div class="collectonme"></div>
+    <div class="collectonme animated bounceInUp"></div>
 </body>
 
 </html>
