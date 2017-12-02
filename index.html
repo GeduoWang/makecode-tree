@@ -1,4 +1,25 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <title>MakeCode Tree</title>
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+    <script>
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('60b6e4057ed0e16138e3', {
+            cluster: 'us2',
+            encrypted: true
+        });
+
+        var channel = pusher.subscribe('my-channel');
+        channel.bind('my-event', function (data) {
+            alert(data.message);
+        });
+    </script>
+</head>
+
 <body>
     <iframe allowfullscreen="true" src="https://mixer.com/embed/player/17350019"></iframe>
 </body>
