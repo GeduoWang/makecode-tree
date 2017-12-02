@@ -4,7 +4,7 @@ var Pusher = require('pusher-js');
 var pusher = new Pusher('9f03d84109487dd57bbd', {
     cluster: 'us2',
     encrypted: true,
-    authEndpoint: '/pusher_auth.php'
+    authEndpoint: 'http://makecode-tree.azurewebsites.net/pusher/auth'
 });
 
 var channel = pusher.subscribe('private-tree-channel');
